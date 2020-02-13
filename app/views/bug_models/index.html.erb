@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>User</th>
       <th>Title</th>
       <th>Description</th>
       <th>Issue type</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @bug_models.each do |bug_model| %>
       <tr>
+          <td><%= "#{bug_model.user.fname} #{bug_model.user.lname}" %></td>
         <td><%= bug_model.title %></td>
         <td><%= bug_model.description %></td>
         <td><%= bug_model.issue_type %></td>

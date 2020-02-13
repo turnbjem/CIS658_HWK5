@@ -71,7 +71,7 @@ class BugModelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bug_model_params
-      params.require(:bug_model).permit(:title, :description, :issue_type, :priority, :status)
+      params.require(:bug_model).permit(:user_id, :title, :description, :issue_type, :priority, :status)
     end
 
     def set_issue_types
