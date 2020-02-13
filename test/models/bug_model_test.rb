@@ -3,7 +3,7 @@ require 'test_helper'
 class BugModelTest < ActiveSupport::TestCase
 
   def setup
-    @bug_model = BugModel.create(title:"a testt case", description:"This is a description of what the type and behavior of the bug", issue_type: 1, priority: 0, status:0)
+    @bug_model = BugModel.create(title:"a testt case", description:"This is a description of what the type and behavior of the bug", issue_type: 1, priority: 0, status:0, user: User.first)
   end
 
   test "bug must be valid" do
