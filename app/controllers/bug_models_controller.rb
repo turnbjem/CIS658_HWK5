@@ -1,6 +1,8 @@
 class BugModelsController < ApplicationController
   before_action :set_bug_model, only: [:show, :edit, :update, :destroy]
   before_action :set_issue_types
+  before_action :set_priorities
+  before_action :set_statuses
   # GET /bug_models
   # GET /bug_models.json
   def index
@@ -74,6 +76,14 @@ class BugModelsController < ApplicationController
 
     def set_issue_types
       @issues = BugModel.issue_types
+    end
+
+    def set_priorities
+      @priorities = BugModel.priorities
+    end
+
+    def set_statuses
+      @statuses = BugModel.statuses
     end
 end
 

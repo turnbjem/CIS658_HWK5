@@ -28,12 +28,12 @@
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.number_field :priority %>
+    <%= form.select :priority, @priorities.keys, selected: @bug_model.priority %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.select :status, @statuses.keys, selected: @bug_model.status %>
   </div>
 
   <div class="actions">
