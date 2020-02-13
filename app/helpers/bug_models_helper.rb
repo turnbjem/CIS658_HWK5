@@ -1,0 +1,2 @@
+module BugModelsHelper
+end

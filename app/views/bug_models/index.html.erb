@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bug Models</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Issue type</th>
+      <th>Priority</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bug_models.each do |bug_model| %>
+      <tr>
+        <td><%= bug_model.title %></td>
+        <td><%= bug_model.description %></td>
+        <td><%= bug_model.issue_type %></td>
+        <td><%= bug_model.priority %></td>
+        <td><%= bug_model.status %></td>
+        <td><%= link_to 'Show', bug_model %></td>
+        <td><%= link_to 'Edit', edit_bug_model_path(bug_model) %></td>
+        <td><%= link_to 'Destroy', bug_model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bug Model', new_bug_model_path %>
