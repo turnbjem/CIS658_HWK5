@@ -1,47 +1,47 @@
 <%= form_with(model: bug_model, local: true) do |form| %>
-  <% if bug_model.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bug_model.errors.count, "error") %> prohibited this bug_model from being saved:</h2>
+    <% if bug_model.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(bug_model.errors.count, "error") %> prohibited this bug_model from being saved:</h2>
 
-      <ul>
-        <% bug_model.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+            <ul>
+                <% bug_model.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="field">
+        <%= form.label :user %>
+        <%= form.select :user_id, options_for_select(User.all.collect {|a| ["#{a.lname}, #{a.fname}", a.id]},
+            selected: (@bug_model.user ? @bug_model.user.id : User.first.id)), {}, { class: "form-control" }%>
     </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :user %>
-    <%= form.select :user_id, options_for_select(User.all.collect {|a| ["#{a.lname}, #{a.fname}", a.id]},
-	 		selected: (@bug_model.user ? @bug_model.user.id : User.first.id)), {} %>
-  </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "form-control"%>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "form-control"%>
+    </div>
 
-  <div class="field">
-    <%= form.label :issue_type %>
-    <%= form.select :issue_type, @issues.keys, selected: @bug_model.issue_type %>
-  </div>
+    <div class="field">
+        <%= form.label :issue_type %>
+        <%= form.select :issue_type, @issues.keys, {selected: @bug_model.issue_type}, {class: "form-control" }%>
+    </div>
 
-  <div class="field">
-    <%= form.label :priority %>
-    <%= form.select :priority, @priorities.keys, selected: @bug_model.priority %>
-  </div>
+    <div class="field">
+        <%= form.label :priority %>
+        <%= form.select :priority, @priorities.keys, {selected: @bug_model.priority}, {class: "form-control" }%>
+    </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, @statuses.keys, selected: @bug_model.status %>
-  </div>
+    <div class="field">
+        <%= form.label :status %>
+        <%= form.select :status, @statuses.keys, {selected: @bug_model.status}, {class: "form-control" }%>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+        <%= form.submit class: "btn btn-outline-primary"%>
+    </div>
 <% end %>
