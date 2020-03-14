@@ -1,5 +1,7 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
+<%= form_with(model: user, local: true, id: 'postForm') do |form| %>
+    <div id='errorMessage'>
+    </div>
+    <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -9,29 +11,45 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
   <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "form-control"%>
+    <%= form.text_field :email, id: "email",  class: "form-control"%>
   </div>
 
   <div class="form-group">
     <%= form.label :lname %>
-    <%= form.text_field :lname, class: "form-control"%>
+    <%= form.text_field :lname,id: "lname",  class: "form-control"%>
   </div>
 
   <div class="form-group">
     <%= form.label :fname %>
-    <%= form.text_field :fname, class: "form-control"%>
+    <%= form.text_field :fname, id: "fname", class: "form-control"%>
   </div>
 
   <div class="form-group">
     <%= form.label :thumbnail %>
-    <%= form.text_field :thumbnail, class: "form-control"%>
+    <%= form.text_field :thumbnail, id: "thumbnail", class: "form-control"%>
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-primary"%>
+      <%= form.submit data: {disable_with: false} %>
   </div>
+
+
+
+  <style type="text/css">
+#errorMessage {
+    width  : 100%;
+  padding: 0;
+
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+</style>
 <% end %>
